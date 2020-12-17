@@ -1,3 +1,6 @@
 a.out
 .ccls-cache/
 TODOS.txt
+.vscode/launch.json
+.vscode/tasks.json
+main
