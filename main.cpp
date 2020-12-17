@@ -1,4 +1,6 @@
 #include <iostream>
+#pragma once
+
 void introduceApp();
 
 int main(){
