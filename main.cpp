@@ -1,12 +1,12 @@
 #include <iostream>
-#include "calendar.h"
+#include "calendar.hpp"
 
 void introduceApp();
 
 int main(){
     introduceApp();
     YearCalendar calendar;
-    calendar.caluclateFirstDay(2017);
+    calendar.caluclateFirstDay(2019);
 }
 
 // Introduces the app
