@@ -49,7 +49,7 @@ struct YearCalendar{
         int yearCode = helper.getYearCode(year);
 
         int afterYearCode = afterMonthValue + yearCode;
-        int finalValue = (afterYearCode + lastTwoDigitsOfYear) / 7;
+        int finalValue = (afterYearCode + lastTwoDigitsOfYear) % 7;
 
         std::map<int, std::string> dayList{
             {1, "Sun"},
