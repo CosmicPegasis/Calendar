@@ -25,22 +25,23 @@ struct Calendar{
 
 struct CalendarHelper{
     int calculateYear(int year){
-
-        while(year < 17) {
-            year = year + 4;
+        while(year < 1700) {
+            year = year + 400;
         }
 
-        while (year > 20) {
-            year = year - 4;
+        while (year > 2000) {
+            year = year - 400;
         }
-    }
 
-    CalendarHelper(){
         std::map<int, int> yearList = {
-            {20, 6},
-            {19, 0},
-            {18, 2},
-            {17, 4}
+            {2000, 6},
+            {1900, 0},
+            {1800, 2},
+            {1700, 4}
         };
+
+        // TODO [Continue From Here] Use yearList map to return the year code
+
     }
+
 };
