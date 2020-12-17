@@ -4,3 +4,4 @@ TODOS.txt
 .vscode/launch.json
 .vscode/tasks.json
 main
+.vscode/c_cpp_properties.json
