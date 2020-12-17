@@ -4,27 +4,9 @@
 
 #pragma once
 
-struct Calendar{
-    void print(int month,int year){
-       // Formatting 
-    }
-
-    int caluclateFirstDay(int year){
-        int lastTwoDatesOfYear = year % 100;
-        float beforeAddingMonthValue = floor(lastTwoDatesOfYear/4) + 1;
-
-        if(lastTwoDatesOfYear % 4 == 0.0) {
-            int afterMonthValue = beforeAddingMonthValue; 
-        }
-        else{
-            int afterMonthValue = beforeAddingMonthValue + 1;
-        }
-        // Finish function
-    }
-};
-
 struct CalendarHelper{
-    int calculateYear(int year){
+    int getYearCode(int year){
+        year = floor(year / 100) * 100;
         while(year < 1700) {
             year = year + 400;
         }
@@ -40,8 +22,46 @@ struct CalendarHelper{
             {1700, 4}
         };
 
-        // TODO [Continue From Here] Use yearList map to return the year code
-
+        return yearList[year];
     }
 
+};
+
+struct YearCalendar{
+    void print(int month,int year){
+       // Formatting 
+    }
+
+    int caluclateFirstDay(int year){
+        CalendarHelper helper;
+
+        int lastTwoDigitsOfYear = year % 100;
+        float beforeMonthValue = floor(lastTwoDigitsOfYear/4) + 1;
+        int afterMonthValue{};
+
+        if(lastTwoDigitsOfYear % 4 == 0.0) {
+            afterMonthValue = beforeMonthValue; 
+        }
+        else{
+            afterMonthValue = beforeMonthValue + 1;
+        }
+        // Finish function
+        int yearCode = helper.getYearCode(year);
+
+        int afterYearCode = afterMonthValue + yearCode;
+        int finalValue = (afterYearCode + lastTwoDigitsOfYear) / 7;
+
+        std::map<int, std::string> dayList{
+            {1, "Sun"},
+            {2, "Mon"},
+            {3, "Tue"},
+            {4, "Wed"},
+            {5, "Thu"},
+            {6, "Fri"},
+            {0, "Sun"}
+        };
+        std::cout << dayList[finalValue];
+        // TODO [Start from here] Debug this function
+        return 0;
+    }
 };
