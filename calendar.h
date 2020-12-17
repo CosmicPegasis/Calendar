@@ -1,4 +1,7 @@
+#include <map>
 #include <cmath>
+#include <string>
+
 #pragma once
 
 struct Calendar{
@@ -22,7 +25,22 @@ struct Calendar{
 
 struct CalendarHelper{
     int calculateYear(int year){
-        while(year < 17 )
+
+        while(year < 17) {
+            year = year + 4;
+        }
+
+        while (year > 20) {
+            year = year - 4;
+        }
     }
-    )
-}
+
+    CalendarHelper(){
+        std::map<int, int> yearList = {
+            {20, 6},
+            {19, 0},
+            {18, 2},
+            {17, 4}
+        };
+    }
+};
