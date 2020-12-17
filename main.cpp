@@ -1,10 +1,12 @@
 #include <iostream>
-#pragma once
+#include "calendar.h"
 
 void introduceApp();
 
 int main(){
     introduceApp();
+    YearCalendar calendar;
+    calendar.caluclateFirstDay(2017);
 }
 
 // Introduces the app
