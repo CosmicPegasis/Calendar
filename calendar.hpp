@@ -33,7 +33,7 @@ struct YearCalendar{
        // Formatting 
     }
 
-    int caluclateFirstDay(int year){
+    std::string caluclateFirstDay(int year){
         CalendarHelper helper;
 
         int lastTwoDigitsOfYear = year % 100;
@@ -61,8 +61,7 @@ struct YearCalendar{
             {6, "Fri"},
             {0, "Sun"}
         };
-        std::cout << dayList[finalValue];
-        // TODO [Start from here] Debug this function
-        return 0;
+        return dayList[finalValue];
     }
+    // TODO [Start Here] Make helper function to print out days on top of calendar
 };
