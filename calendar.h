@@ -7,8 +7,22 @@ struct Calendar{
     }
 
     int caluclateFirstDay(int year){
-        int lastTwoDaysOfYear = year % 100;
-        float beforeAddingMonthValue = floor(lastTwoDaysOfYear/4);
+        int lastTwoDatesOfYear = year % 100;
+        float beforeAddingMonthValue = floor(lastTwoDatesOfYear/4) + 1;
+
+        if(lastTwoDatesOfYear % 4 == 0.0) {
+            int afterMonthValue = beforeAddingMonthValue; 
+        }
+        else{
+            int afterMonthValue = beforeAddingMonthValue + 1;
+        }
         // Finish function
     }
 };
+
+struct CalendarHelper{
+    int calculateYear(int year){
+        while(year < 17 )
+    }
+    )
+}
