@@ -5,7 +5,7 @@
 
 #pragma once
 
-struct CalendarHelper{
+struct YearCalendarHelper{
     int getYearCode(int year){
         year = floor(year / 100) * 100;
         while(year < 1700) {
@@ -29,12 +29,8 @@ struct CalendarHelper{
 };
 
 struct YearCalendar{
-    void print(int month,int year){
-       // Formatting 
-    }
-
     std::string caluclateFirstDay(int year){
-        CalendarHelper helper;
+        YearCalendarHelper helper;
 
         int lastTwoDigitsOfYear = year % 100;
         float beforeMonthValue = floor(lastTwoDigitsOfYear/4) + 1;
@@ -46,22 +42,46 @@ struct YearCalendar{
         else{
             afterMonthValue = beforeMonthValue + 1;
         }
-        // Finish function
-        int yearCode = helper.getYearCode(year);
 
+        int yearCode = helper.getYearCode(year);
         int afterYearCode = afterMonthValue + yearCode;
         int finalValue = (afterYearCode + lastTwoDigitsOfYear) % 7;
 
         std::map<int, std::string> dayList{
-            {1, "Sun"},
-            {2, "Mon"},
-            {3, "Tue"},
-            {4, "Wed"},
-            {5, "Thu"},
-            {6, "Fri"},
-            {0, "Sun"}
+            {0, "Sun"},
+            {1, "Mon"},
+            {2, "Tue"},
+            {3, "Wed"},
+            {4, "Thu"},
+            {5, "Fri"},
+            {6, "Sun"}
         };
         return dayList[finalValue];
     }
-    // TODO [Start Here] Make helper function to print out days on top of calendar
+    void printDays(){
+        std::cout << "Sun Mon Tue Wed Thu Fri Sat";
+    }
+    
+    void printMonthCalendar(int monthNum, int startDay){
+        int totalDays = 0;
+
+        if(monthNum % 2 == 0 && monthNum != 2 && monthNum != 8){
+           totalDays = 30;
+        }
+        else{
+            totalDays = 31;
+        }
+
+        printDays();
+
+        int copyStartDay = startDay;
+        std::string firstRow = "  ";
+        while (copyStartDay != 0){
+            firstRow += "    " ;
+            copyStartDay -= 1;
+        }
+        // Print the first row
+        // End the line
+        // Print the rest of the rows
+    }
 };
