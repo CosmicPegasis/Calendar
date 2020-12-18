@@ -5,8 +5,6 @@ void introduceApp();
 
 int main(){
     introduceApp();
-    YearCalendar calendar;
-    calendar.caluclateFirstDay(2019);
 }
 
 // Introduces the app
