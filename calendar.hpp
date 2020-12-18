@@ -34,14 +34,7 @@ struct YearCalendarHelper{
         return yearList[year];
     }
 
-};
-
-struct YearCalendar{
-    // [Should be in year helper] Calculates the first day of any given year
     std::string caluclateFirstDay(int year){
-        // Inits a helper class to calculate the year code
-        YearCalendarHelper helper;
-
         // Gets last two digits of year
         int lastTwoDigitsOfYear = year % 100;
         // Divides last two digits by four, discards remainder and adds 1
@@ -56,8 +49,8 @@ struct YearCalendar{
             afterMonthValue = beforeMonthValue + 1;
         }
 
-        // Uses year helper to get year code
-        int yearCode = helper.getYearCode(year);
+        // Calculates Year Code
+        int yearCode = getYearCode(year);
         // Adds previous value to year code
         int afterYearCode = afterMonthValue + yearCode;
         // Calulates the remainder by 7 after adding previous value with the last two digits again
@@ -65,17 +58,22 @@ struct YearCalendar{
 
         // Use this map to find which day it is
         std::map<int, std::string> dayList{
-            {0, "Sun"},
-            {1, "Mon"},
-            {2, "Tue"},
-            {3, "Wed"},
-            {4, "Thu"},
-            {5, "Fri"},
-            {6, "Sun"}
+            {1, "Sun"},
+            {2, "Mon"},
+            {3, "Tue"},
+            {4, "Wed"},
+            {5, "Thu"},
+            {6, "Fri"},
+            {0, "Sat"}
         };
         // Gives back the first day
         return dayList[finalValue];
     }
+
+};
+
+struct YearCalendar{
+    // [Should be in year helper] Calculates the first day of any given year
     // Prints back days
     void printDays(){
         std::cout << "Sun Mon Tue Wed Thu Fri Sat" << std::endl;
@@ -147,5 +145,9 @@ struct YearCalendar{
             }
 
         }
+    }
+    //TODO [Continue from here] make function to print out all the months in an year.
+    void printYear(){
+
     }
 };
