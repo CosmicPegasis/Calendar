@@ -23,12 +23,6 @@ struct YearCalendarHelper{
         }
 
         // We did the above so we can use the pre existing year codes for the four cenutries
-        std::map<int, int> yearList = {
-            {2000, 6},
-            {1900, 0},
-            {1800, 2},
-            {1700, 4}
-        };
 
         // Give back the year code
         return yearList[year];
@@ -57,6 +51,16 @@ struct YearCalendarHelper{
         int finalValue = (afterYearCode + lastTwoDigitsOfYear) % 7;
 
         // Use this map to find which day it is
+        // Gives back the first day
+        return dayList[finalValue];
+    }
+        std::map<int, int> yearList = {
+            {2000, 6},
+            {1900, 0},
+            {1800, 2},
+            {1700, 4}
+        };
+
         std::map<int, std::string> dayList{
             {1, "Sun"},
             {2, "Mon"},
@@ -66,9 +70,21 @@ struct YearCalendarHelper{
             {6, "Fri"},
             {0, "Sat"}
         };
-        // Gives back the first day
-        return dayList[finalValue];
-    }
+        
+        std::map<int, std::string> monthList = {
+            {1, "Jan"},
+            {2, "Feb"},
+            {3, "Mar"},
+            {4, "Apr"},
+            {5, "May"},
+            {6, "Jun"},
+            {7, "Jul"},
+            {8, "Aug"},
+            {9, "Sep"},
+            {10, "Oct"},
+            {11, "Nov"},
+            {12, "Dec"}
+        };
 
 };
 
@@ -147,7 +163,15 @@ struct YearCalendar{
         }
     }
     //TODO [Continue from here] make function to print out all the months in an year.
-    void printYear(){
+    void printYear(int year){
+        bool leapYear = false;
+        YearCalendarHelper helper;
 
+        if(year % 4 == 0){
+            leapYear = true;
+        }
+        // Print month name
+        // Print month calendar
+        // Leave space then print next calendar
     }
 };
