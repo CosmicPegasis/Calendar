@@ -78,7 +78,7 @@ struct YearCalendar{
     }
     // Prints back days
     void printDays(){
-        std::cout << "Sun Mon Tue Wed Thu Fri Sat";
+        std::cout << "Sun Mon Tue Wed Thu Fri Sat" << std::endl;
     }
     
     // Prints the calendar for a month
@@ -91,19 +91,19 @@ struct YearCalendar{
         if(monthNum < 8 && monthNum % 2 == 0 && monthNum != 2){
            totalDays = 30;
         }
-        elif(monthNum < 8 && monthNum % 2 == 1){
+        else if(monthNum < 8 && monthNum % 2 == 1){
             totalDays = 31;
         }
-        elif(monthNum > 7 && monthNum % 2 == 0) {
+        else if(monthNum > 7 && monthNum % 2 == 0) {
             totalDays = 31;
         }
-        elif(monthNum > 7 && monthNum % 2 == 1) {
+        else if(monthNum > 7 && monthNum % 2 == 1) {
             totalDays = 30;
         }
-        elif(monthNum == 2 && leapYear){
+        else if(monthNum == 2 && leapYear){
             totalDays = 29;
         }
-        elif(monthNum == 2 && !leapYear){
+        else if(monthNum == 2 && !leapYear){
             totalDays = 28;
         }
 
@@ -117,6 +117,12 @@ struct YearCalendar{
             copyStartDay -= 1;
         }
         // Print the first row
+        int totalDatesInFirstRow = 7 - startDay;
+
+        std::cout << firstRow;
+        for(int i{1}; i <= totalDatesInFirstRow; i++){
+            std::cout << i << "   ";
+        }
         // End the line
         // Print the rest of the rows
     }
