@@ -124,6 +124,28 @@ struct YearCalendar{
             std::cout << i << "   ";
         }
         // End the line
+        std::cout << std::endl;
+
         // Print the rest of the rows
+        int remainingDays = totalDays - totalDatesInFirstRow;
+        std::cout << "  ";
+
+        for(int i{0}; i <= remainingDays - 1; i++){
+            int date = i + totalDatesInFirstRow + 1;
+            if(i > 7 && i % 7 == 0 && date < 10){
+                std::cout << std::endl << "  " << date << "   ";
+
+            }
+            else if(i >= 7 && i % 7 == 0 && date >= 10){
+                std::cout << std::endl << " " << date << "  ";
+            }
+            else if(date + 1 < 10){
+            std::cout << date << "   ";
+            }
+            else if(date + 1 >= 10){
+                std::cout << date << "  ";
+            }
+
+        }
     }
 };
