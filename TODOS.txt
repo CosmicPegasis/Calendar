@@ -1,6 +1,6 @@
-1. Write a welcome program.
-2. Figure out a way to print calendars.
-3. Add interactions with the calendars.
+1. Write a welcome program.---
+2. Figure out a way to print calendars. ---
+3. Add interactions with the calendars. NEXT
 4. Add things like agendas and todo lists.
 
 
