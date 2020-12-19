@@ -50,7 +50,6 @@ struct YearCalendarHelper{
         // Calulates the remainder by 7 after adding previous value with the last two digits again
         int finalValue = (afterYearCode + lastTwoDigitsOfYear) % 7;
 
-        // Use this map to find which day it is
         // Gives back the first day
         return dayList[finalValue];
     }
@@ -61,6 +60,7 @@ struct YearCalendarHelper{
             {1700, 4}
         };
 
+        // Use this map to find which day it is(Changed it to more sensisble code)
         std::map<int, int> dayList{
             {1, 0},
             {2, 1},
@@ -71,6 +71,7 @@ struct YearCalendarHelper{
             {0, 6}
         };
         
+        // Use this map to find which month it is
         std::map<int, std::string> monthList = {
             {1, "Jan"},
             {2, "Feb"},
@@ -88,8 +89,8 @@ struct YearCalendarHelper{
 
 };
 
+// Main year calendar class
 struct YearCalendar{
-    // [Should be in year helper] Calculates the first day of any given year
     // Prints back days
     void printDays(){
         std::cout << "Sun Mon Tue Wed Thu Fri Sat" << std::endl;
@@ -143,43 +144,55 @@ struct YearCalendar{
         // Print the rest of the rows
         int remainingDays = totalDays - totalDatesInFirstRow;
         std::cout << "  ";
+        // Calculates the first day of next month
         int firstDayNextMonth = remainingDays % 7;
 
+        // Print out all the dates
         for(int i{0}; i <= remainingDays - 1; i++){
+            // Makes out date from i
             int date = i + totalDatesInFirstRow + 1;
+            // if i is single digit and at the end of the week
             if(i > 7 && i % 7 == 0 && date < 10){
                 std::cout << std::endl << "  " << date << "   ";
 
             }
+            // special case for when week ends on 8
             else if(i == 7 && i % 7 == 0 && date == 9){
                 std::cout << std::endl << "  " << date << "  ";
 
             }
+            // if i is double digit and at the end of the week
             else if(i >= 7 && i % 7 == 0 && date >= 10){
                 std::cout << std::endl << " " << date << "  ";
             }
+            // if i is a week day and single digit
             else if(date + 1 < 10){
             std::cout << date << "   ";
             }
+            // if i is a week day and double digit
             else if(date + 1 >= 10){
                 std::cout << date << "  ";
             }
 
         }
         std::cout << std::endl;
+        // returns the first day of next month to put back in this function
         return firstDayNextMonth;
     }
-    //TODO [Continue from here] make function to print out all the months in an year.
     void printYear(int year){
         bool isLeapYear = false;
         YearCalendarHelper helper;
+        // Calculates the first day of the year
         int firstDay = helper.caluclateFirstDay(year);
 
+        // Checks if given year is leap
         if(year % 4 == 0){
             isLeapYear = true;
         }
 
+        // Prints out Jan
         std::cout << "\t  " << helper.monthList[1] << "\n";
+        // Prints out all the dates of Jan
         int firstDayNextMonth = printMonthCalendar(1, firstDay, isLeapYear);
 
         for(int i{2}; i < 13; i++) {
