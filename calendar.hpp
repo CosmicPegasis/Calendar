@@ -96,7 +96,7 @@ struct YearCalendar{
     }
     
     // Prints the calendar for a month
-    int printMonthCalendar(int monthNum, int startDay, bool leapYear){
+    int printMonthCalendar(int monthNum, int startDay, bool isLeapYear){
         // Prints days
         printDays();
         int totalDays = 0;
@@ -114,10 +114,10 @@ struct YearCalendar{
         else if(monthNum > 7 && monthNum % 2 == 1) {
             totalDays = 30;
         }
-        else if(monthNum == 2 && leapYear){
+        else if(monthNum == 2 && isLeapYear){
             totalDays = 29;
         }
-        else if(monthNum == 2 && !leapYear){
+        else if(monthNum == 2 && !isLeapYear){
             totalDays = 28;
         }
 
@@ -151,6 +151,10 @@ struct YearCalendar{
                 std::cout << std::endl << "  " << date << "   ";
 
             }
+            else if(i == 7 && i % 7 == 0 && date == 9){
+                std::cout << std::endl << "  " << date << "  ";
+
+            }
             else if(i >= 7 && i % 7 == 0 && date >= 10){
                 std::cout << std::endl << " " << date << "  ";
             }
@@ -162,23 +166,32 @@ struct YearCalendar{
             }
 
         }
+        std::cout << std::endl;
         return firstDayNextMonth;
     }
     //TODO [Continue from here] make function to print out all the months in an year.
     void printYear(int year){
-        bool leapYear = false;
+        bool isLeapYear = false;
         YearCalendarHelper helper;
         int firstDay = helper.caluclateFirstDay(year);
 
         if(year % 4 == 0){
-            leapYear = true;
+            isLeapYear = true;
         }
-        for(int i{1}; i < 13; i++) {
+
+        std::cout << "\t  " << helper.monthList[1] << "\n";
+        int firstDayNextMonth = printMonthCalendar(1, firstDay, isLeapYear);
+
+        for(int i{2}; i < 13; i++) {
+            // Print month name
             std::string month = helper.monthList[i];
-            std::cout << "\t\t\t  " << month;
+            std::cout << "\t  " << month << "\n";
+
+            // Print month calendar
+            firstDayNextMonth = printMonthCalendar(i, firstDayNextMonth, isLeapYear);
+
+            // Leave space then print next calendar
+            std::cout << "\n\n";
         }
-        // Print month name
-        // Print month calendar
-        // Leave space then print next calendar
     }
 };
