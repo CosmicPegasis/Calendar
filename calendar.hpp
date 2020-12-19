@@ -28,7 +28,7 @@ struct YearCalendarHelper{
         return yearList[year];
     }
 
-    std::string caluclateFirstDay(int year){
+    int caluclateFirstDay(int year){
         // Gets last two digits of year
         int lastTwoDigitsOfYear = year % 100;
         // Divides last two digits by four, discards remainder and adds 1
@@ -61,14 +61,14 @@ struct YearCalendarHelper{
             {1700, 4}
         };
 
-        std::map<int, std::string> dayList{
-            {1, "Sun"},
-            {2, "Mon"},
-            {3, "Tue"},
-            {4, "Wed"},
-            {5, "Thu"},
-            {6, "Fri"},
-            {0, "Sat"}
+        std::map<int, int> dayList{
+            {1, 0},
+            {2, 1},
+            {3, 2},
+            {4, 3},
+            {5, 4},
+            {6, 5},
+            {0, 6}
         };
         
         std::map<int, std::string> monthList = {
@@ -96,7 +96,7 @@ struct YearCalendar{
     }
     
     // Prints the calendar for a month
-    void printMonthCalendar(int monthNum, int startDay, bool leapYear){
+    int printMonthCalendar(int monthNum, int startDay, bool leapYear){
         // Prints days
         printDays();
         int totalDays = 0;
@@ -143,6 +143,7 @@ struct YearCalendar{
         // Print the rest of the rows
         int remainingDays = totalDays - totalDatesInFirstRow;
         std::cout << "  ";
+        int firstDayNextMonth = remainingDays % 7;
 
         for(int i{0}; i <= remainingDays - 1; i++){
             int date = i + totalDatesInFirstRow + 1;
@@ -161,14 +162,20 @@ struct YearCalendar{
             }
 
         }
+        return firstDayNextMonth;
     }
     //TODO [Continue from here] make function to print out all the months in an year.
     void printYear(int year){
         bool leapYear = false;
         YearCalendarHelper helper;
+        int firstDay = helper.caluclateFirstDay(year);
 
         if(year % 4 == 0){
             leapYear = true;
+        }
+        for(int i{1}; i < 13; i++) {
+            std::string month = helper.monthList[i];
+            std::cout << "\t\t\t  " << month;
         }
         // Print month name
         // Print month calendar
