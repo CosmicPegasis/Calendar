@@ -207,4 +207,28 @@ struct YearCalendar{
             std::cout << "\n\n";
         }
     }
+
+    void menu(){
+        int year;
+        bool menu_running;
+        std::string response;
+        do {
+            std::cout << "Which year would you like to print?[Enter year number]: ";
+            std::cin >> year;
+
+            printYear(year);
+            std::cout << std::endl;
+
+            std::cout << "Would you like to print out another year?(Y/n) ";
+            std::cin >> response;
+            if(response == "n"){
+                menu_running = false;
+            }
+            else{
+                menu_running = true;
+            }
+        }
+        while(menu_running);
+
+    }
 };
