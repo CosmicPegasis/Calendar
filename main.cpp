@@ -1,17 +1,14 @@
 #include <iostream>
 #include "calendar.hpp"
+#include "user_interaction.hpp"
 
-void introduceApp();
 
 int main(){
-    introduceApp();
-    YearCalendar calendar;
-    calendar.printYear(2025);
+    interaction::introduceApp();
+    interaction::menu();
+//    YearCalendar calendar;
+//    calendar.printYear(2025);
 }
 
-// Introduces the app
-void introduceApp(){
-    std::cout << "Welcome To Calendar!" << "\nThis is the number one calendar program in the universe!" << std::endl;
-}
 
 // TODO [Start from here] Take user input
