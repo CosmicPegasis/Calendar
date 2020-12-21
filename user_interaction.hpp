@@ -1,4 +1,7 @@
 #include <iostream>
+#include "calendar.hpp"
+
+#pragma once
 
 namespace interaction{
 
@@ -17,7 +20,8 @@ namespace interaction{
             std::cin >> response;
 
             if(response == 1){
-                std::cout << "Yay! It works!";
+                YearCalendar calendar;
+                calendar.menu();
                 menu_running = false;
 
             }
