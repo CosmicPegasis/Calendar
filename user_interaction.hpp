@@ -10,7 +10,7 @@ namespace interaction{
         std::cout << "Welcome To Calendar!" << "\nThis is the number one calendar program in the universe!" << std::endl;
     }
 
-    int menu(){
+    void menu(){
         int response;
         bool menu_running;
         do{
