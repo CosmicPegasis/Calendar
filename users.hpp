@@ -9,13 +9,12 @@ using json = nlohmann::json;
 struct UserProcesingHelper{
     json users;
 
-    void read_json() {
-        std::ifstream file("data/users.json");
-        users = json::parse(file);
+    UserProcesingHelper() {
+        std::ifstream file_read("data/users.json");
+        users = json::parse(file_read);
     }
 
     bool check_user(std::string user){
-        read_json();
         if(users.find(user) != users.end()){
             return true;
         }
@@ -38,5 +37,15 @@ struct UserProcesingHelper{
         }
     }
 
+    void make_user(std::string user, std::string password){
+        users[user] = password; 
+        std::ofstream file_write("data/users.json");
+        file_write << users;
+        file_write.close();
+
+        std::ifstream file_reread("data/users.json");
+        users = json::parse(file_reread);
+        file_reread.close();
+    }
 
 };
