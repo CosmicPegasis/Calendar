@@ -49,3 +49,20 @@ struct UserProcesingHelper{
     }
 
 };
+
+struct UserProcessing{
+    // TODO [Continue from here]
+    void process(){
+        // Ask what to do
+            // User log in
+                // Ask Credentials 
+                    // Non existent user -- Ask to make a new one
+                    // Existent user ask for password
+                // Verify Credentials
+            
+            // Make a new user
+                // Ask for username and password
+        
+        // return the username and password to display things like agenda and todo lists
+    }
+};
