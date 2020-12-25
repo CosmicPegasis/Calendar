@@ -7,3 +7,4 @@ main
 .vscode/c_cpp_properties.json
 TODOS.txt
 data/users.json
+.vscode/settings.json
