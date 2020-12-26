@@ -50,19 +50,55 @@ struct UserProcesingHelper{
 
 };
 
+// TODO Refactor entire class
 struct UserProcessing{
-    // TODO [Continue from here]
     void process(){
-        // Ask what to do
-            // User log in
-                // Ask Credentials 
-                    // Non existent user -- Ask to make a new one
-                    // Existent user ask for password
-                // Verify Credentials
+        UserProcesingHelper helper;
+        do{
+            // Ask what to do
+            std::cout << "Welcome!" << std::endl;
+                // User log in
+            std::cout << "[1] Log In" << std::endl;
+                // Make a new user
+            std::cout << "[2] Make New User" << std::endl;
+
+            std::string response;
+            std::cin >> response;
             
-            // Make a new user
-                // Ask for username and password
+            if(response == "1"){
+                // Ask Credentials 
+                std::cout << std::endl << "Please enter username: ";
+                std::string username;
+                std::cin >> username;
+
+                bool is_user = helper.check_user(username);
+                if(is_user) {
+                    do{
+                        // Verify Credentials
+                        // Existent user ask for password
+                        bool is_correct_password = helper.check_password(username);
+
+                        if(is_correct_password){
+                            std::cout << "Hello! " << username;
+                            break;
+                        }
+
+                        else{
+                            std::cout << "Incorrect Password!";
+                            continue;
+                        }
+                    } 
+                    while(true);
+                    // TODO Continue from here -- Make case for when user doesn't exist
+                }
+            }
+        }
+                        // Non existent user -- Ask to make a new one
+                
+                    // Ask for username and password
+        while(true);
         
         // return the username and password to display things like agenda and todo lists
+
     }
 };
