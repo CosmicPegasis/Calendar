@@ -3,7 +3,6 @@
 #include <iostream>
 
 #pragma once
-
 using json = nlohmann::json;
 
 struct UserProcesingHelper{
@@ -14,7 +13,7 @@ struct UserProcesingHelper{
         users = json::parse(file_read);
     }
 
-    bool check_user(std::string user){
+    bool check_user(std::string user, json users){
         if(users.find(user) != users.end()){
             return true;
         }
@@ -23,7 +22,7 @@ struct UserProcesingHelper{
         }
     }
 
-    bool check_password(std::string user){
+    bool check_password(std::string user, json users){
         std::cout << "Please enter your password: ";
         std::string password;
         std::cin >> password;
@@ -42,34 +41,33 @@ struct UserProcesingHelper{
         std::ofstream file_write("data/users.json");
         file_write << users;
         file_write.close();
-
-        std::ifstream file_reread("data/users.json");
-        users = json::parse(file_reread);
-        file_reread.close();
     }
 
 };
 
-// TODO Refactor entire class
 struct UserProcessing{
     void process(){
         UserProcesingHelper helper;
+        json users = helper.users;
         do{
             std::string response = intro();
             if(response == "1"){
                 // Ask Credentials 
                 std::string username = get_username();
 
-                bool is_user = helper.check_user(username);
+                bool is_user;
+                is_user = helper.check_user(username, users);
                 bool authentication_sucessful;
-                authentication_sucessful = process_password(is_user, username, helper);
+                authentication_sucessful = process_password(is_user, username, helper, users);
 
                 if(authentication_sucessful){
                     break;
                 }
             }
+            if(response == "2") {
+                users = make_user_menu(helper);
         }
-                        // Non existent user -- Ask to make a new one
+        }
                 
                     // Ask for username and password
         while(true);
@@ -92,19 +90,19 @@ struct UserProcessing{
             // Make a new user
         std::cout << "[2] Make New User" << std::endl;
             // Quit
-        std::cout << "[3] Quit";
+        std::cout << "[3] Quit" << std::endl;
 
         std::string response;
         std::cin >> response;
 
         return response;
     }
-    bool process_password(bool is_user, std::string username, UserProcesingHelper helper){
+    bool process_password(bool is_user, std::string username, UserProcesingHelper helper, json users){
             if(is_user) {
                 do{
                     // Verify Credentials
                     // Existent user ask for password
-                    bool is_correct_password = helper.check_password(username);
+                    bool is_correct_password = helper.check_password(username, users);
 
                     if(is_correct_password){
                         std::cout << "Hello! " << username;
@@ -117,12 +115,27 @@ struct UserProcessing{
                     }
                 } 
                 while(true);
-                // TODO Continue from here -- Make case for when user doesn't exist
                 return true;
             }
             else{
                 std::cout << "This user does not exist." << std::endl;
                 return false;
             }
+    }
+    json make_user_menu(UserProcesingHelper helper){
+        // Non existent user -- Ask to make a new one
+        std::string username;
+        std::string password;
+
+        std::cout << "Please enter username: ";
+        std::cin >> username;
+        std::cout << std::endl << "Please enter password: ";
+        std::cin >> password;
+        
+        helper.make_user(username, password);
+        std::cout << "Your user has been created. Go ahead and sign in!" << std::endl;
+
+        return helper.users;
+       
     }
 };
