@@ -67,9 +67,7 @@ struct UserProcessing{
             
             if(response == "1"){
                 // Ask Credentials 
-                std::cout << std::endl << "Please enter username: ";
-                std::string username;
-                std::cin >> username;
+                std::string username = get_username();
 
                 bool is_user = helper.check_user(username);
                 if(is_user) {
@@ -90,6 +88,11 @@ struct UserProcessing{
                     } 
                     while(true);
                     // TODO Continue from here -- Make case for when user doesn't exist
+                    break;
+                }
+                else{
+                    std::cout << "This user does not exist." << std::endl;
+                    continue;
                 }
             }
         }
@@ -100,5 +103,12 @@ struct UserProcessing{
         
         // return the username and password to display things like agenda and todo lists
 
+    }
+    std::string get_username(){
+        std::cout << std::endl << "Please enter username: ";
+        std::string username;
+        std::cin >> username;
+
+        return username;
     }
 };
