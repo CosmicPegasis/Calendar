@@ -7,8 +7,8 @@
 int main(){
     //interaction::introduceApp();
     // interaction::menu();
-    UserProcesingHelper helper;
-    helper.make_user("cosmic", "aarav");
+    UserProcessing process;
+    process.process();
 //    YearCalendar calendar;
 //    calendar.printYear(2025);
 }
