@@ -11,6 +11,7 @@ namespace interaction{
     }
 
     void menu(){
+        // TODO Change response type from integer to std::string
         int response;
         bool menu_running;
         do{
