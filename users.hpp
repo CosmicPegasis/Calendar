@@ -1,4 +1,4 @@
-#include "dependencies/json.hpp"
+#include <nlohmann/json.hpp>
 #include <fstream>
 #include <iostream>
 
@@ -66,7 +66,8 @@ struct UserProcessing{
             }
             if(response == "2") {
                 users = make_user_menu(helper);
-        }
+            }
+        // TODO Write function to end program anytime
         }
                 
                     // Ask for username and password
