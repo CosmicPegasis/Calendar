@@ -48,7 +48,16 @@ struct YearCalendarHelper{
         // Adds previous value to year code
         int afterYearCode = afterMonthValue + yearCode;
         // Calulates the remainder by 7 after adding previous value with the last two digits again
-        int finalValue = (afterYearCode + lastTwoDigitsOfYear) % 7;
+        int finalValue;
+        if(1 < afterYearCode && afterYearCode < 7){
+            finalValue =  7 - afterYearCode;
+        }
+        else if(afterYearCode == 1){
+            finalValue = 2; // Arbitrary because of algorithm used
+        }
+        else{
+            finalValue = (afterYearCode + lastTwoDigitsOfYear) % 7;
+        }
 
         // Gives back the first day
         return dayList[finalValue];
@@ -62,13 +71,13 @@ struct YearCalendarHelper{
 
         // Use this map to find which day it is(Changed it to more sensisble code)
         std::map<int, int> dayList{
-            {1, 0},
-            {2, 1},
-            {3, 2},
-            {4, 3},
-            {5, 4},
-            {6, 5},
-            {0, 6}
+            {1, 0}, // Sunday
+            {2, 1}, // Monday
+            {3, 2}, // Tuesday
+            {4, 3}, // Wednesday
+            {5, 4}, // Thursday
+            {6, 5}, // Friday
+            {0, 6}  // Saturday
         };
         
         // Use this map to find which month it is
