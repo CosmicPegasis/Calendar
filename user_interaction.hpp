@@ -1,5 +1,6 @@
 #include <iostream>
 #include "features/calendar.hpp"
+#include "users.hpp"
 
 #pragma once
 
@@ -12,24 +13,26 @@ namespace interaction{
 
     void menu(){
         std::string response;
-        bool menu_running;
         do{
             std::cout << "Please select an option" << std::endl;
             std::cout << "[1] Print out the calendar for a year" << std::endl;
+            std::cout << "[2] Check out your TODOs and agendas" << std::endl;
             std::cout << "Response: ";
             std::cin >> response;
 
             if(response == "1"){
                 YearCalendar calendar;
                 calendar.menu();
-                menu_running = false;
+                break;
 
             }
-            else{
-                menu_running = true;
+            if(response == "2") {
+                UserProcessing processor;
+                processor.process();
+                break;
             }
         }
-        while(menu_running == true);
+        while(true);
 
     }
 
