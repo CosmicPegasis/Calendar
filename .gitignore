@@ -1,9 +1,10 @@
-a.out
 .ccls-cache/
 TODOS.txt
 .vscode/launch.json
 .vscode/tasks.json
-main
 .vscode/c_cpp_properties.json
 .vscode/settings.json
 data/users.json
+tests/calendars
+*.out
+src/main
