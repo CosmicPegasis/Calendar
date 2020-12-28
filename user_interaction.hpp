@@ -11,8 +11,7 @@ namespace interaction{
     }
 
     void menu(){
-        // TODO Change response type from integer to std::string
-        int response;
+        std::string response;
         bool menu_running;
         do{
             std::cout << "Please select an option" << std::endl;
@@ -20,7 +19,7 @@ namespace interaction{
             std::cout << "Response: ";
             std::cin >> response;
 
-            if(response == 1){
+            if(response == "1"){
                 YearCalendar calendar;
                 calendar.menu();
                 menu_running = false;
