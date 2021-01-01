@@ -9,7 +9,7 @@ struct UserProcesingHelper{
     json users;
 
     UserProcesingHelper() {
-        std::ifstream file_read("data/users.json");
+        std::ifstream file_read("src/data/users.json");
         users = json::parse(file_read);
     }
 
