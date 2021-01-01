@@ -6,6 +6,4 @@ TODOS.txt
 .vscode/settings.json
 src/data/users.json
 src/data/agendas.json
-tests/calendars
 *.out
-src/main
