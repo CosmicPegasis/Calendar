@@ -4,6 +4,5 @@ TODOS.txt
 .vscode/tasks.json
 .vscode/c_cpp_properties.json
 .vscode/settings.json
-src/data/users.json
-src/data/agendas.json
 *.out
+*.json
