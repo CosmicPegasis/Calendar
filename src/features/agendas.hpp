@@ -15,6 +15,17 @@ struct AgendaHelper{
     AgendaHelper(){
         std::ifstream file_read;
         file_read.open("src/data/agendas.json");
+        if(!file_read){
+            file_read.close();
+
+            std::ofstream file_make;
+            file_make.open("src/data/agendas.json");
+            file_make << "{}";
+            file_make.close();
+
+            file_read.open("src/data/agendas.json");
+            
+        }
         agenda = json::parse(file_read);
         file_read.close();
     }
@@ -22,7 +33,7 @@ struct AgendaHelper{
     std::string make_agenda(std::string agenda_text, std::string username, int date, int month, int year){
         agenda[username] = {year, {month, {date, agenda_text}}};
         std::ofstream file_write;
-        file_write.open("src/features/agendas.json");
+        file_write.open("src/data/agendas.json");
         file_write << agenda;
         file_write.close();
     
