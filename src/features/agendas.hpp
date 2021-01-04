@@ -41,7 +41,12 @@ struct AgendaHelper{
     }
 
     std::string get_agenda( std::string username, std::string date, std::string month, std::string year) {
+        try{
         std::string agenda_text = agenda[username][year][month][date];
         return agenda_text;
+        }
+        catch(std::exception& e) {
+            return "No agenda for this day.";
+        }
     }
 };
