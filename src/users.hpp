@@ -10,7 +10,19 @@ struct UserProcesingHelper{
 
     UserProcesingHelper() {
         std::ifstream file_read("src/data/users.json");
+        if(!file_read){
+            file_read.close();
+
+            std::ofstream file_make;
+            file_make.open("src/data/users.json");
+            file_make << "{}";
+            file_make.close();
+
+            file_read.open("src/data/users.json");
+            
+        }
         users = json::parse(file_read);
+        file_read.close();
     }
 
     bool check_user(std::string user, json users){
