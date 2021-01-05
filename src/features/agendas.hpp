@@ -69,8 +69,13 @@ struct AgendaHelper{
 
 struct Agenda{
     // Constructor that accepts username
-    Agenda(std::string username) {
-        std::string* username = &username;
+    std::string *username = new std::string();
+    AgendaHelper* helper = new AgendaHelper();
+
+    Agenda(std::string username) : username {&username} {}
+    ~Agenda(){
+        delete helper;
+        delete username;
     }
     // Make a menu system
     void menu(){
@@ -101,6 +106,9 @@ struct Agenda{
     }
 
     // Front end to add agendas
+    void add_agenda() {
+
+    }
     // Front end to retrieve agendas
     // Parser for user input dates
 };
