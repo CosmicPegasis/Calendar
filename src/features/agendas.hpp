@@ -65,14 +65,14 @@ struct AgendaHelper{
     }
 };
 
-// TODO [Continue from here] Write AgendaHelper wrapper
 
 struct Agenda{
     // Constructor that accepts username
-    std::string *username = new std::string();
+    std::string* username = new std::string();
     AgendaHelper* helper = new AgendaHelper();
 
     Agenda(std::string username) : username {&username} {}
+    
     ~Agenda(){
         delete helper;
         delete username;
@@ -107,8 +107,12 @@ struct Agenda{
 
     // Front end to add agendas
     void add_agenda() {
-
+        std::cout << "Please enter date of agenda[DD/MM/YYYY]";
+        // TODO [Continue from here]
+        // Check date validity
+        // Parse date
+        // Check if agenda already exists for that day and ask to overwrite it
+        // Take in agenda text and write it
     }
     // Front end to retrieve agendas
-    // Parser for user input dates
 };
