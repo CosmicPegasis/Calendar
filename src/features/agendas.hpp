@@ -66,3 +66,41 @@ struct AgendaHelper{
 };
 
 // TODO [Continue from here] Write AgendaHelper wrapper
+
+struct Agenda{
+    // Constructor that accepts username
+    Agenda(std::string username) {
+        std::string* username = &username;
+    }
+    // Make a menu system
+    void menu(){
+        do{
+        std::cout << "Welcome to Agendas!\n[1] Add Agendas\n[2] Check Agenda\nResponose: ";
+
+        std::string response;
+        std::cin >> response;
+
+        // When response is to add agendas
+        if(response == "1") {
+            // Add Agenda Front End
+            // Ask if you want to do something else
+            break;
+        }
+
+        // When response is to check agendas
+        if(response == "2") {
+            // Check Agenda Front End
+            // Ask if you want to do something else
+            break;
+        }
+
+        // For any thing other than this the loop should keep repeating
+
+        }
+        while(true);
+    }
+
+    // Front end to add agendas
+    // Front end to retrieve agendas
+    // Parser for user input dates
+};
