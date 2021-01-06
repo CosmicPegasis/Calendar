@@ -42,7 +42,7 @@ bool UserProcesingHelper::check_password(std::string user, json users){
 
 void UserProcesingHelper::make_user(std::string user, std::string password){
         users[user] = password; 
-        std::ofstream file_write("data/users.json");
+        std::ofstream file_write("src/data/users.json");
         file_write << users;
         file_write.close();
     }
