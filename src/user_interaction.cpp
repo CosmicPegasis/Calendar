@@ -1,4 +1,6 @@
 #include "user_interaction.hpp"
+#include "users.hpp"
+#include "calendar.hpp"
 
 void interaction::introduceApp(){
         std::cout << "Welcome To Calendar!" << "\nThis is the number one calendar program in the universe!" << std::endl;
