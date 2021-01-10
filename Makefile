@@ -1,7 +1,7 @@
 CXX := g++ -I include -c
 
-bin/app: bin/main.o bin/user_interaction.o bin/users.o bin/calendar.o bin/agendas.o
-	g++ bin/main.o bin/user_interaction.o bin/users.o bin/calendar.o bin/agendas.o
+bin/app: bin/main.o bin/user_interaction.o bin/users.o bin/calendar.o bin/agendas.o bin/date_processer.o
+	g++ bin/main.o bin/user_interaction.o bin/users.o bin/calendar.o bin/agendas.o bin/date_processer.o
 
 bin/main.o: src/main.cpp
 	$(CXX) src/main.cpp -o bin/main.o
@@ -17,6 +17,9 @@ bin/calendar.o: src/features/calendar.cpp include/calendar.hpp
 
 bin/agendas.o: src/features/agendas.cpp include/agendas.hpp
 	$(CXX) src/features/agendas.cpp -o bin/agendas.o
+
+bin/date_processer.o: src/features/date_processer.cpp include/date_processer.hpp
+	$(CXX) src/features/date_processer.cpp -o bin/date_processer.o
 
 clean: 
 	rm bin/*
