@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iostream>
 
+
 #pragma once
 // Store data in a file
 // Add agendas 
@@ -26,7 +27,7 @@ struct AgendaHelper{
 
 struct Agenda{
     // Constructor that accepts username
-    std::string* username = new std::string();
+    const std::string* username;
     AgendaHelper* helper = new AgendaHelper();
 
     Agenda(std::string username);

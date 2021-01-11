@@ -51,7 +51,7 @@ std::string AgendaHelper::get_agenda( std::string username, std::string date, st
 
 
 
-Agenda::Agenda(std::string username) : username {&username} {}
+Agenda::Agenda(std::string username) : username {new std::string(username)} {}
 
 Agenda::~Agenda(){
     delete helper;
@@ -89,7 +89,17 @@ void Agenda::add_agenda() {
     std::cout << "Please enter date of agenda[DD/MM/YYYY]";
     // TODO [Continue from here]
     // Check date validity
-    // Parse date
+    std::string date;
+    std::cin >> date;
+    std::string month_date = date.substr(0, 2);
+
+    std::cout << "\n" << month_date;
     // Check if agenda already exists for that day and ask to overwrite it
     // Take in agenda text and write it
+}
+
+int main(){
+    Agenda agenda("cosmic");
+    agenda.add_agenda();
+
 }
