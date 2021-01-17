@@ -1,8 +1,12 @@
 #include "date_processer.hpp"
 
+// TODO Add a date constructor to take in date and then change all parameters to just the date
 bool DateProcesser::check_date_validity(std::string date){
     if(date.length() != 10){
-        return false;
+        is_valid = false;
+    }
+    else if(date.substr(2, 1) != "/" || date.substr(5, 1) != "/"){
+        is_valid = false;
     }
 }
 
