@@ -7,3 +7,7 @@ TODOS.txt
 *.out
 *.json
 *.o
+.ccls
+.cproject
+.project
+.settings/

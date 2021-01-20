@@ -1,5 +1,7 @@
 CXX := g++ -I include -c
 
+all: bin/app
+
 bin/app: bin/main.o bin/user_interaction.o bin/users.o bin/calendar.o bin/agendas.o bin/date_processer.o
 	g++ bin/main.o bin/user_interaction.o bin/users.o bin/calendar.o bin/agendas.o bin/date_processer.o
 
@@ -22,4 +24,4 @@ bin/date_processer.o: src/features/date_processer.cpp include/date_processer.hpp
 	$(CXX) src/features/date_processer.cpp -o bin/date_processer.o
 
 clean: 
-	rm bin/*
+	rm -rf bin/*

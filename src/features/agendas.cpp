@@ -89,17 +89,12 @@ void Agenda::add_agenda() {
     std::cout << "Please enter date of agenda[DD/MM/YYYY]";
     // TODO [Continue from here]
     // Check date validity
+    // Do all this in Date_Processer constructor;
     std::string date;
     std::cin >> date;
-    std::string month_date = date.substr(0, 2);
+    std::string month_date = date.substr(0, 1);
 
     std::cout << "\n" << month_date;
     // Check if agenda already exists for that day and ask to overwrite it
     // Take in agenda text and write it
-}
-
-int main(){
-    Agenda agenda("cosmic");
-    agenda.add_agenda();
-
 }

@@ -3,11 +3,19 @@
 #pragma once
 
 struct DateProcesser{
-    bool check_date_validity(std::string date);
+    DateProcesser(std::string date);
 
-    bool check_month_date_validity(std::string month_date);
+    bool check_date_validity();
 
-    bool check_month_validity(std::string month);
+    bool check_month_date_validity();
 
-    bool check_year_validity(std::string year);
+    bool check_month_validity();
+
+    bool check_year_validity();
+
+    bool is_valid = true;
+    const std::string date;
+    const std::string month_date;
+    const std::string month;
+    const std::string year;
 };
