@@ -11,3 +11,5 @@ TODOS.txt
 .cproject
 .project
 .settings/
+*.plist
+.cache
