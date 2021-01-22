@@ -6,13 +6,13 @@
 struct DateProcesser {
   DateProcesser(std::string date);
 
-  void check_date_validity();
+  std::string check_date_validity();
 
   bool check_month_date_validity();
 
   bool check_month_validity();
 
-  bool check_year_validity();
+  void check_year_validity();
 
   bool is_valid{true};
   const std::string date;
