@@ -36,6 +36,7 @@ int DateProcesser::check_year_validity() {
     else if (year % 4 == 0) {
 
     }
+    return year;
 }
 
 int DateProcesser::check_month_validity() {
@@ -51,10 +52,16 @@ int DateProcesser::check_month_validity() {
     if (month < 1 || month > 12) {
         is_valid = false;
     }
+    return month;
 }
 
 bool DateProcesser::check_month_date_validity() {
     // Check date validity
-
+    /* How to do this:
+     * Take in month date and year as parameters
+     * Check whether the year is leap year or not
+     * Check whether it is Feb
+     * Check whether month has 30 days or not
+     */
     // Check the date is correct or not in comparison to the month
 }
