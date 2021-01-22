@@ -13,38 +13,46 @@ DateProcesser::DateProcesser(std::string date)
       year{date.substr(6, 4)} {}
 
 std::string DateProcesser::check_date_validity() {
-  if (date.length() != 10) {
-    is_valid = false;
-  } else if (date.substr(2, 1) != "/" || date.substr(5, 1) != "/") {
-    is_valid = false;
-  }
+    if (date.length() != 10) {
+        is_valid = false;
+    } else if (date.substr(2, 1) != "/" || date.substr(5, 1) != "/") {
+        is_valid = false;
+    }
 }
 
 void DateProcesser::check_year_validity() {
-  std::stringstream ss{year};
-  int year;
-  try {
-    ss >> year;
-  } catch (std::exception &e) {
-    is_valid = false;
-  }
-  // Check year validity
-  if (year < 1000 || year > 9999) {
-    is_valid = false;
-  }
-  // Also check whether the year is a leap year
-  else if (year % 4 == 0) {
-      
-  }
+    std::stringstream ss{year};
+    int year;
+    try {
+        ss >> year;
+    } catch (std::exception &e) {
+        is_valid = false;
+    }
+    // Check year validity
+    if (year < 1000 || year > 9999) {
+        is_valid = false;
+    }
+    // Also check whether the year is a leap year
+    else if (year % 4 == 0) {
+
+    }
 }
 
 bool DateProcesser::check_month_validity() {
-  // Check month validity
-  // Also check what the last date is
+    // Check month validity
+    std::stringstream ss;
+    int month;
+    try {
+        ss >> month;
+    }
+    catch (std::exception &e) {
+        is_valid = false;
+    }
+    // Also check what the last date is
 }
 
 bool DateProcesser::check_month_date_validity() {
 
-  // Check date validity
-  // Check the date is correct or not in comparison to the month
+    // Check date validity
+    // Check the date is correct or not in comparison to the month
 }
