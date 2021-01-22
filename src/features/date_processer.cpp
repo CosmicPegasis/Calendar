@@ -48,7 +48,6 @@ bool DateProcesser::check_month_validity() {
     catch (std::exception &e) {
         is_valid = false;
     }
-    // Also check what the last date is
 }
 
 bool DateProcesser::check_month_date_validity() {
