@@ -12,7 +12,7 @@ DateProcesser::DateProcesser(std::string date)
     : date{date}, month_date{date.substr(0, 2)}, month{date.substr(3, 2)},
       year{date.substr(6, 4)} {}
 
-std::string DateProcesser::check_date_validity() {
+void DateProcesser::check_date_validity() {
     if (date.length() != 10) {
         is_valid = false;
     } else if (date.substr(2, 1) != "/" || date.substr(5, 1) != "/") {
@@ -20,7 +20,7 @@ std::string DateProcesser::check_date_validity() {
     }
 }
 
-void DateProcesser::check_year_validity() {
+int DateProcesser::check_year_validity() {
     std::stringstream ss{year};
     int year;
     try {
@@ -38,7 +38,7 @@ void DateProcesser::check_year_validity() {
     }
 }
 
-bool DateProcesser::check_month_validity() {
+int DateProcesser::check_month_validity() {
     // Check month validity
     std::stringstream ss;
     int month;
@@ -48,10 +48,13 @@ bool DateProcesser::check_month_validity() {
     catch (std::exception &e) {
         is_valid = false;
     }
+    if (month < 1 || month > 12) {
+        is_valid = false;
+    }
 }
 
 bool DateProcesser::check_month_date_validity() {
-
     // Check date validity
+
     // Check the date is correct or not in comparison to the month
 }
