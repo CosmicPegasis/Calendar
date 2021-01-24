@@ -55,7 +55,7 @@ int DateProcesser::check_month_validity() {
     return month;
 }
 
-void DateProcesser::check_month_date_validity(int month, int year) {
+int DateProcesser::check_month_date_validity(int month, int year) {
     // Check date validity
     std::stringstream ss{month_date};
     int month_date;
@@ -97,6 +97,7 @@ void DateProcesser::check_month_date_validity(int month, int year) {
     if(month_date < 1 || month_date > month_last_date) {
         is_valid = false;
     }
+    return month_date;
 }
 
 bool DateProcesser::check() {
