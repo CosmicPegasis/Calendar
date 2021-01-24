@@ -1,16 +1,17 @@
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include <iostream>
+#include "date_processer.hpp"
 
 
 #pragma once
 // Store data in a file
-// Add agendas 
+// Add agendas
 // Add a help statement
 
 
 // Base class
-struct AgendaHelper{
+struct AgendaHelper {
     // Make json var using json header file
     nlohmann::json agenda;
 
@@ -25,13 +26,13 @@ struct AgendaHelper{
 };
 
 
-struct Agenda{
+struct Agenda {
     // Constructor that accepts username
     const std::string* username;
     AgendaHelper* helper = new AgendaHelper();
 
     Agenda(std::string username);
-    
+
     ~Agenda();
 
     // Make a menu system
