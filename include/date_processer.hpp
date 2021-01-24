@@ -8,7 +8,7 @@ struct DateProcesser {
 
     void check_date_validity();
 
-    bool check_month_date_validity();
+    void check_month_date_validity(int month, int year);
 
     int check_month_validity();
 
