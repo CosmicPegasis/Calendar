@@ -98,3 +98,13 @@ void DateProcesser::check_month_date_validity(int month, int year) {
         is_valid = false;
     }
 }
+
+bool DateProcesser::check() {
+    while(is_valid) {
+        check_date_validity();
+        int month = check_month_validity();
+        int year = check_year_validity();
+        check_month_date_validity(month, year);
+    }
+    return is_valid;
+}
