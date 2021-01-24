@@ -41,7 +41,7 @@ int DateProcesser::check_year_validity() {
 
 int DateProcesser::check_month_validity() {
     // Check month validity
-    std::stringstream ss;
+    std::stringstream ss{month};
     int month;
     try {
         ss >> month;
@@ -55,13 +55,46 @@ int DateProcesser::check_month_validity() {
     return month;
 }
 
-bool DateProcesser::check_month_date_validity() {
+void DateProcesser::check_month_date_validity(int month, int year) {
     // Check date validity
-    /* How to do this:
-     * Take in month date and year as parameters
-     * Check whether the year is leap year or not
-     * Check whether it is Feb
-     * Check whether month has 30 days or not
-     */
+    std::stringstream ss{month_date};
+    int month_date;
+    try {
+        ss >> month_date;
+    }
+    catch(std::exception &e) {
+        is_valid = false;
+    };
+
+    if (month > 12 || month < 1) {
+        is_valid = false;
+    }
+    else if (year > 9999 || year < 1000) {
+        is_valid = false;
+    }
+
+    bool is_leap_year = false;
+    int month_last_date;
+
+    if(year % 4 == 0) {
+        is_leap_year = true;
+    }
+
+    if(month == 2 && is_leap_year) {
+        month_last_date = 29;
+    }
+    else if(month == 2) {
+        month_last_date = 28;
+    }
+    else if(month == 4 || month == 6 || month == 9 || month == 11) {
+        month_last_date = 30;
+    }
+    else {
+        month_last_date = 31;
+    }
     // Check the date is correct or not in comparison to the month
+
+    if(month_date < 1 || month_date > month_last_date) {
+        is_valid = false;
+    }
 }
