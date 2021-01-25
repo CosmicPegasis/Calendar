@@ -41,4 +41,5 @@ struct Agenda {
     // Front end to add agendas
     void add_agenda();
     // Front end to retrieve agendas
+    void check_agenda();
 };

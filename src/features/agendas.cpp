@@ -74,8 +74,7 @@ void Agenda::menu() {
         // When response is to check agendas
         else if(response == "2") {
             // Check Agenda Front End
-            // Ask if you want to do something else
-            break;
+            check_agenda();
         }
         else if (response == "3") {
             break;
@@ -133,4 +132,19 @@ void Agenda::add_agenda() {
 
     // Check if agenda already exists for that day and ask to overwrite it
     // Take in agenda text and write it
+}
+
+void Agenda::check_agenda() {
+    std::cout << "Please enter date of agenda[DD/MM/YYYY]: ";
+    std::string date;
+    std::cin.ignore();
+    std::cin >> date;
+    DateProcesser date_processer{date};
+
+    std::string year = date_processer.year;
+    std::string month = date_processer.month;
+    std::string month_date = date_processer.month_date;
+    std::string agenda_text = helper->get_agenda(*username, month_date, month, year);
+
+    std::cout << "\n" << agenda_text << "\n";
 }
