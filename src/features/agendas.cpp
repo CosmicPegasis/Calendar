@@ -123,7 +123,8 @@ void Agenda::add_agenda() {
             if(agenda_exists || overwrite) {
                 std::cout << "Please enter your agenda: ";
                 std::string agenda_text;
-                std::cin >> agenda_text;
+                std::cin.ignore();
+                std::getline(std::cin, agenda_text);
                 helper->make_agenda(agenda_text, *username, month_date, month, year);
             }
             break;
