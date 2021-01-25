@@ -6,4 +6,7 @@
 - See the Calendar of any year
 - Set Agendas on days and then retrieve them
 
+### Dependencies
+- nlohmann/json
+
 Made with love on Linux
