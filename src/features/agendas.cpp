@@ -70,14 +70,14 @@ void Agenda::menu() {
             // Add Agenda Front End
             add_agenda();
             // Ask if you want to do something else
-            std::cout << "Do you want to do something else?[y/N]";
+            std::cout << "Do you want to do something else?[y/N]: ";
             std::string response;
             std::cin >> response;
 
             if(response == "y") {
                 continue;
             }
-            else {
+            else if(response == "n") {
                 break;
             }
         }
@@ -97,7 +97,7 @@ void Agenda::menu() {
 
 void Agenda::add_agenda() {
     while(true) {
-        std::cout << "Please enter date of agenda[DD/MM/YYYY]";
+        std::cout << "Please enter date of agenda[DD/MM/YYYY]: ";
         std::string date;
         std::cin >> date;
         DateProcesser date_processer{date};
@@ -105,15 +105,16 @@ void Agenda::add_agenda() {
         std::string month = date_processer.month;
         std::string month_date = date_processer.month_date;
 
-        if(date_processer.check()) {
-            std::cout << "Invalid date";
+        if(!date_processer.check()) {
+            std::cout << "Invalid date\n";
             continue;
         }
         else {
-            std::cout << "Please enter your agenda";
+            std::cout << "Please enter your agenda: ";
             std::string agenda_text;
+            std::cin >> agenda_text;
             helper->make_agenda(agenda_text, *username, date, month, year);
-
+            break;
         }
     }
 

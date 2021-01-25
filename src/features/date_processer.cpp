@@ -106,6 +106,7 @@ bool DateProcesser::check() {
         int month = check_month_validity();
         int year = check_year_validity();
         check_month_date_validity(month, year);
+        break;
     }
     return is_valid;
 }

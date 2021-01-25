@@ -1,21 +1,22 @@
 #include "user_interaction.hpp"
 #include "users.hpp"
 #include "calendar.hpp"
+#include "agendas.hpp"
 
-void interaction::introduceApp(){
-        std::cout << "Welcome To Calendar!" << "\nThis is the number one calendar program in the universe!" << std::endl;
-    }
+void interaction::introduceApp() {
+    std::cout << "Welcome To Calendar!" << "\nThis is the number one calendar program in the universe!" << std::endl;
+}
 
-void interaction::menu(){
+void interaction::menu() {
     std::string response;
-    do{
+    do {
         std::cout << "Please select an option" << std::endl;
         std::cout << "[1] Print out the calendar for a year" << std::endl;
         std::cout << "[2] Check out your TODOs and agendas" << std::endl;
         std::cout << "Response: ";
         std::cin >> response;
 
-        if(response == "1"){
+        if(response == "1") {
             YearCalendar calendar;
             calendar.menu();
             break;
@@ -23,7 +24,9 @@ void interaction::menu(){
         }
         if(response == "2") {
             UserProcessing processor;
-            processor.process();
+            std::string username = processor.process();
+            Agenda agenda{username};
+            agenda.menu();
             break;
         }
     }

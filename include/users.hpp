@@ -4,7 +4,7 @@
 
 #pragma once
 
-struct UserProcesingHelper{
+struct UserProcesingHelper {
     nlohmann::json users;
 
     UserProcesingHelper();
@@ -16,8 +16,8 @@ struct UserProcesingHelper{
     void make_user(std::string user, std::string password);
 };
 
-struct UserProcessing{
-    void process();
+struct UserProcessing {
+    std::string process();
 
     std::string get_username();
 
