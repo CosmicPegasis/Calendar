@@ -60,7 +60,7 @@ Agenda::~Agenda() {
 
 void Agenda::menu() {
     do {
-        std::cout << "Welcome to Agendas!\n[1] Add Agendas\n[2] Check Agenda\nResponose: ";
+        std::cout << "\nWelcome to Agendas!\n[1] Add Agendas\n[2] Check Agenda\n[3] Exit\nResponose: ";
 
         std::string response;
         std::cin >> response;
@@ -69,23 +69,15 @@ void Agenda::menu() {
         if(response == "1") {
             // Add Agenda Front End
             add_agenda();
-            // Ask if you want to do something else
-            std::cout << "Do you want to do something else?[y/N]: ";
-            std::string response;
-            std::cin >> response;
-
-            if(response == "y") {
-                continue;
-            }
-            else if(response == "n") {
-                break;
-            }
         }
 
         // When response is to check agendas
-        if(response == "2") {
+        else if(response == "2") {
             // Check Agenda Front End
             // Ask if you want to do something else
+            break;
+        }
+        else if (response == "3") {
             break;
         }
 
@@ -110,10 +102,30 @@ void Agenda::add_agenda() {
             continue;
         }
         else {
-            std::cout << "Please enter your agenda: ";
-            std::string agenda_text;
-            std::cin >> agenda_text;
-            helper->make_agenda(agenda_text, *username, date, month, year);
+            bool overwrite{false};
+            bool agenda_exists{false};
+
+            std::string existing_agenda = helper->get_agenda(*username, month_date, month, year) ;
+            if(existing_agenda != "No agenda for this day.") {
+                std::cout << "Agenda alread exists for this day. The agenda is:\n";
+                std::cout << existing_agenda << "\n";
+                std::cout << "Do you want to overwrite it?[y/n]: ";
+                std::string response;
+                std::cin >> response;
+                if(response == "y") {
+                    overwrite = true;
+                }
+            }
+
+            else {
+                agenda_exists = true;
+            }
+            if(agenda_exists || overwrite) {
+                std::cout << "Please enter your agenda: ";
+                std::string agenda_text;
+                std::cin >> agenda_text;
+                helper->make_agenda(agenda_text, *username, month_date, month, year);
+            }
             break;
         }
     }
